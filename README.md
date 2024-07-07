@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# JS-React-frontend-hoopsDB
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains a React.js frontend application that interacts with the hoopsDB backend API provided by the [Springboot-MongoDB-Webscraper-hoopsDB](https://github.com/DrPavel81/Springboot-MongoDB-Webscraper-hoopsDB) project. The project demonstrates setting up a frontend application with React.js, fetching data from a REST API, and displaying basketball data.
 
-## Available Scripts
+## Technologies Used
 
-In the project directory, you can run:
+- React.js
+- Axios (for HTTP requests)
+- Bootstrap (for styling)
 
-### `npm start`
+## Requirements
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js
+- npm (Node Package Manager)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup
 
-### `npm test`
+1. **Clone the repository.**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    ```shell
+    git clone https://github.com/DrPavel81/JS-React-frontend-hoopsDB.git
+    cd JS-React-frontend-hoopsDB
+    ```
 
-### `npm run build`
+2. **Install dependencies.**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```shell
+    npm install
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Update API base URL.**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    Update the `src/api.js` file with the base URL of the hoopsDB backend API (`Springboot-MongoDB-Webscraper-hoopsDB`).
 
-### `npm run eject`
+    ```javascript
+    import axios from 'axios';
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    const api = axios.create({
+        baseURL: 'http://localhost:8080/api', // Update with the base URL of your hoopsDB backend API
+    });
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    export const getAllPlayers = () => api.get('/players');
+    export const getPlayerById = (id) => api.get(`/players/${id}`);
+    // Add more API calls as needed
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    export default api;
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Run the application.**
 
-## Learn More
+    ```shell
+    npm start
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    The application will run on `http://localhost:3000`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure
 
-### Code Splitting
+- `src/components`: Contains React components.
+- `src/api.js`: API configuration and calls.
+- `public`: Contains static assets and `index.html`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Using the Application
 
-### Analyzing the Bundle Size
+Once the application is running, you can access it at `http://localhost:3000` in your web browser. The frontend will fetch data from the hoopsDB backend API and display it accordingly.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Integrating with hoopsDB Backend API
 
-### Making a Progressive Web App
+The frontend interacts with the hoopsDB backend API provided by the [Springboot-MongoDB-Webscraper-hoopsDB](https://github.com/DrPavel81/Springboot-MongoDB-Webscraper-hoopsDB) project. Ensure that the backend API is running and accessible from the frontend application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To set up the backend API:
 
-### Advanced Configuration
+1. **Clone the backend repository.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    ```shell
+    git clone https://github.com/DrPavel81/Springboot-MongoDB-Webscraper-hoopsDB.git
+    cd Springboot-MongoDB-Webscraper-hoopsDB
+    ```
 
-### Deployment
+2. **Build and run the backend application.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    ```shell
+    ./mvnw spring-boot:run
+    ```
 
-### `npm run build` fails to minify
+    The backend API will be accessible at `http://localhost:8080/api`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project provides a simple React.js frontend for interacting with the hoopsDB backend API (`Springboot-MongoDB-Webscraper-hoopsDB`). It demonstrates basic data fetching and rendering techniques in React.js.
